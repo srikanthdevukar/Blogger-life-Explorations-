@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    width: 400px;
+    height: 500px;
+    text-align: center;
+}
+
+.login-container {
+    padding: 20px;
+}
+
+h2 {
+    color: #333333;
+    margin-bottom: 60px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 6px;
+    color: #555555;
+    text-align: left;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.forgot-password {
+    margin-top: 10px;
+    color: #555555;
+    text-decoration: underline;
+    cursor: pointer;
+    display: block;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+    </style>
+    <script>
+      function validateLogin() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+    // Your login validation logic here
+    // For simplicity, let's assume a basic validation
+    if (username === "user" && password === "password") {
+        alert("Login successful!"); // Replace with your desired action after successful login
+    } else {
+        document.getElementById("errorMessage").innerText = "Invalid username or password";
+    }
+}
+
+function openForgotPasswordModal() {
+    document.getElementById("forgotPasswordModal").style.display = "block";
+}
+
+function closeForgotPasswordModal() {
+    document.getElementById("forgotPasswordModal").style.display = "none";
+}
+
+function sendPasswordResetEmail() {
+    var email = document.getElementById("forgotEmail").value;
+
+    // Your logic to send a password reset email
+    // This is a placeholder, and you would typically implement this on the server side
+    alert("Password reset email sent to " + email);
+
+    closeForgotPasswordModal();
+}
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="login-container">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="button" onclick="validateLogin()">Login</button>
+            </form>
+            <p class="error-message" id="errorMessage"></p>
+
+            <div class="forgot-password" onclick="openForgotPasswordModal()">Forgot Password?</div>
+        </div>
+    </div>
+
+    <!-- Modal for Forgot Password -->
+    <div id="forgotPasswordModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeForgotPasswordModal()">&times;</span>
+            <h2>Forgot Password</h2>
+            <p>Enter your email address to reset your password:</p>
+            <input type="email" id="forgotEmail" name="forgotEmail" required>
+            <button type="button" onclick="sendPasswordResetEmail()">Reset Password</button>
+        </div>
+    </div>
+
+    <!-- <script src="script.js"></script> -->
+</body>
+</html>
